@@ -1,24 +1,24 @@
 # Security Policy
 
-SUSE Rancher is deeply committed to safeguarding the security of our products, and endeavors to resolve security issues in a timely manner.
+SUSE NeuVector is deeply committed to safeguarding the security of our products, and endeavors to resolve security issues in a timely manner.
 
 We extend our heartfelt thanks to the security researchers and users who diligently report vulnerabilities. Your invaluable contributions enhance our ability to improve our systems and protect our user community.
 
-We go through all reported security issues, reviewing them with the project's maintainers and coordinating the fixes and disclosures. We credit all accepted reports from users and security researchers in our [Security Advisories](https://github.com/rancher/rancher/security/advisories).
+We go through all reported security issues, reviewing them with the project's maintainers and coordinating the fixes and disclosures. We credit all accepted reports from users and security researchers in our [Security Advisories](https://github.com/neuvector/neuvector/security/advisories).
 
 ## Reporting a Vulnerability
 
 > [!CAUTION]
-> Do not attempt to test a possible vulnerability or a exploit on systems that you do not have an explicit authorization of its owner.
+> Do not attempt to test a possible vulnerability or an exploit on systems that you do not have an explicit authorization of its owner.
 
 Please before reporting a vulnerability, make sure it impacts a [supported version](#supported-versions).
 
 ### What types of issue to report
 
-This reporting channel focuses on bugs with potential security impact on products within the Rancher ecosystem. Example of valid reports:
+This reporting channel focuses on bugs with potential security impact on products within the NeuVector ecosystem. Example of valid reports:
 
-- XSS on Rancher Manager UI.
-- Privilege escalation through Rancher Manager RBAC.
+- XSS on NeuVector UI.
+- Privilege escalation through NeuVector RBAC.
 
 If you are unsure, check the types of issues NOT to report below.
 
@@ -27,8 +27,8 @@ If you are unsure, check the types of issues NOT to report below.
 Some issues are outside of the scope of this channel, and therefore should not be reported:
 
 - CVEs that were found by CVE scanners (e.g. Trivy, Snyk). Public CVEs do not need to be reported as they are fixed as part of the development process.
-- Improvements or questions on the security hardening guides. These should be reported as a new [rancher-docs issue](https://github.com/rancher/rancher-docs/issues/new/choose).
-- Issues or bugs that aren't security related. These should be reported as a new [rancher issue](https://github.com/rancher/rancher/issues/new/choose). 
+- Improvements or questions on the security hardening guides. These should be reported as a new [docs issue](https://github.com/neuvector/docs/issues/new/choose).
+- Issues or bugs that aren't security related. These should be reported as a new [issue](https://github.com/neuvector/neuvector/issues/new/choose). 
 - Issues with mirrored container images, instead please report them via the security channels of the specific upstream project.
 - Issues that are self inflicted and require the user to disable security features or downgrade the security of its environment in order for the vulnerability to be exploited.
 - Issues that can only be exploited by the administrator itself (after all, the admin is already a privileged user and implicitly trusted).
@@ -49,7 +49,7 @@ We currently do not have a bounty rewards program in place, and nor do we offer 
 
 We strive to acknowledge receiving submissions within 5 working days, please wait until that time has past before asking for a status update.
 
-The information contained in your report must be treated as embargoed and must not be shared publicly, unless explicitly agreed with us first. This is to protect the Rancher ecosystem users and enable us to follow through our coordinated disclosure process. The information shall be kept embargoed until a fix is released.
+The information contained in your report must be treated as embargoed and must not be shared publicly, unless explicitly agreed with us first. This is to protect the NeuVector ecosystem users and enable us to follow through our coordinated disclosure process. The information shall be kept embargoed until a fix is released.
 
 ### What information to provide
 
