@@ -18,6 +18,11 @@ policies:
   - name: Update Updatecli policies
     id: updatecli_policy
     policy: ghcr.io/updatecli/policies/updatecli/autodiscovery:0.8.1@sha256:f8edda1a6cbf0d7274e2b847ede29fc4dc70dd5302ccb8575ae21b069cc0d8a0
+    valuesinline:
+      pipeline:
+        labels:
+          ecosystem: updatecli
+          monitor: active
 
   - name: Update githubactions
     id: updatecli_version
@@ -26,6 +31,11 @@ policies:
   - name: Handle Updatecli version in GitHub action
     id: updatecli
     policy: ghcr.io/updatecli/policies/updatecli/githubaction:0.8.1@sha256:48872bbf1a09cfff32ff5ffa07086c20b40d6888c19c36048b18f84bbdad37fe
+    valuesinline:
+      pipeline:
+        labels:
+          ecosystem: updatecli
+          monitor: active
 
   - name: Install Zizmor
     id: zizmor
@@ -36,7 +46,6 @@ policies:
           secrets-outside-env:
             disable: true
 
-  # Disabling typos installation for now
-  # - name: Install Typos everywhere
-  #   id: typos
-  #   policy: ghcr.io/updatecli/policies/typos/githubaction:0.1.1@sha256:b25d4e4e7e1e273bf6cd7f431b3f3b1c9782541b0bc5f52ac35da40f31902ac6
+  - name: Install Typos everywhere
+    id: typos
+    policy: ghcr.io/updatecli/policies/typos/githubaction:0.1.1@sha256:b25d4e4e7e1e273bf6cd7f431b3f3b1c9782541b0bc5f52ac35da40f31902ac6
