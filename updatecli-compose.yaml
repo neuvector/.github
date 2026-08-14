@@ -30,7 +30,7 @@ policies:
 
   - name: Handle Updatecli version in GitHub action
     id: updatecli
-    policy: ghcr.io/updatecli/policies/updatecli/githubaction:0.8.1@sha256:48872bbf1a09cfff32ff5ffa07086c20b40d6888c19c36048b18f84bbdad37fe
+    policy: ghcr.io/updatecli/policies/updatecli/githubaction:0.9.1@sha256:49c07d724474ff7976f7ad5ecb0db9aa46448b456d08f82717913b403a0f02d8
     valuesinline:
       pipeline:
         labels:
@@ -48,4 +48,4 @@ policies:
 
   - name: Install Typos everywhere
     id: typos
-    policy: ghcr.io/updatecli/policies/typos/githubaction:0.1.1@sha256:b25d4e4e7e1e273bf6cd7f431b3f3b1c9782541b0bc5f52ac35da40f31902ac6
+    policy: ghcr.io/updatecli/policies/typos/githubaction:0.1.2@sha256:bd052609cded659c90dd1d3a60ebc5f1368b0f93aac5adf8ff13c3250e97f161
