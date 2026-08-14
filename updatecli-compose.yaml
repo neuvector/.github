@@ -4,8 +4,7 @@ valuesinline:
     enabled: true
     kind: githubsearch
     search: |
-      repo:neuvector/neuvector
-      repo:neuvector/.github
+      org:neuvector
       archived:false 
       fork:false 
       is:public
