@@ -28,6 +28,21 @@ jobs:
           persist-credentials: false
       - name: "Setup updatecli"
         uses: "updatecli/updatecli-action@41b9c8d707830a9daebaeaa84c1b62d60b779564" # v3.6.0
+      - name: "Setup zizmor"
+        env:
+          ZIZMOR_VERSION: "1.29.0"
+          # Used by "gh attestation verify" to fetch zizmor build provenance.
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location \
+            --output zizmor.tar.gz \
+            "https://github.com/zizmorcore/zizmor/releases/download/v${ZIZMOR_VERSION}/zizmor-x86_64-unknown-linux-gnu.tar.gz"
+          gh attestation verify zizmor.tar.gz --repo zizmorcore/zizmor
+          tar --extract --gzip --file zizmor.tar.gz --directory "${RUNNER_TEMP}" zizmor
+          rm zizmor.tar.gz
+          echo "${RUNNER_TEMP}" >> "${GITHUB_PATH}"
+          "${RUNNER_TEMP}/zizmor" --version
       - name: "Run updatecli"
         run: updatecli compose apply --clean-git-branches=true ${{ matrix.apply_args }} --experimental
         env:

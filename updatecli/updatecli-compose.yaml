@@ -1,27 +1,24 @@
 ---
+name: Updatecli policies applied to neuvector/.github
+
 valuesinline:
   scm:
     enabled: true
-    kind: githubsearch
-    search: |
-      org:neuvector
-      archived:false 
-      fork:false 
-      is:public
-    branch: "^main$|^master$"
+    kind: github
+    owner: neuvector
+    repository: .github
+    branch: main
     commitusingapi: true
-    user: updateclibot
-    limit: 0
-
-include:
-  - "updatecli/updatecli-compose.yaml"
+    user: "updatecli-bot"
+    email: "neuvector-kubewarden-policy-converter-bot@users.noreply.github.com"
+    commitmessage:
+      footers: "Signed-off-by: NeuVectorKubewardenPolicyConverter bot <neuvector-kubewarden-policy-converter-bot@users.noreply.github.com>"
 
 policies:
   - name: Local policies
     id: local
     config:
-      - "updatecli/updatecli.d"
-    values:
+      - "updatecli.d"
 
   - name: Update Updatecli policies
     id: updatecli_policy

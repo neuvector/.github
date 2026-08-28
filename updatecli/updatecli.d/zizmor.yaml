@@ -1,0 +1,57 @@
+---
+name: "deps(github): bump zizmor version in the Updatecli workflow"
+
+labels:
+  ecosystem: zizmor
+
+sources:
+  version:
+    name: "Get the latest zizmor release"
+    kind: githubrelease
+    spec:
+      owner: "zizmorcore"
+      repository: "zizmor"
+      url: "https://github.com"
+      versionfilter:
+        kind: semver
+    transformers:
+      - trimprefix: "v"
+
+targets:
+  version:
+    name: 'Update ZIZMOR_VERSION to {{ source "version" }}'
+    kind: file
+    scmid: default
+    sourceid: version
+    spec:
+      files:
+        - ".github/workflows/updatecli.yaml"
+        - ".github/workflows/updatecli_test.yaml"
+        - ".github/workflows/updatecli_update.yaml"
+      matchpattern: 'ZIZMOR_VERSION: "[0-9]+\.[0-9]+\.[0-9]+"'
+      replacepattern: 'ZIZMOR_VERSION: "{{ source "version" }}"'
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    spec:
+      automerge: false
+      mergemethod: squash
+      labels:
+        - "chore"
+        - "dependencies"
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .scm.user }}"
+      email: "{{ .scm.email }}"
+      owner: "{{ .scm.owner }}"
+      repository: "{{ .scm.repository }}"
+      branch: "{{ .scm.branch }}"
+      commitusingapi: true
+      commitmessage:
+        type: "chore"
+        scope: deps
