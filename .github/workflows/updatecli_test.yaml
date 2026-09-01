@@ -16,7 +16,7 @@ jobs:
         uses: "updatecli/updatecli-action@41b9c8d707830a9daebaeaa84c1b62d60b779564" # v3.6.0
       - name: "Setup zizmor"
         env:
-          ZIZMOR_VERSION: "1.29.0"
+          ZIZMOR_VERSION: "1.30.0"
           # Used by "gh attestation verify" to fetch zizmor build provenance.
           GH_TOKEN: ${{ github.token }}
         run: |
