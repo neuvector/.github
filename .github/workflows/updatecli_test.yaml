@@ -7,6 +7,8 @@ permissions:
 jobs:
   updatecli:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: "Checkout"
         uses: "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1" # v7.0.1
@@ -35,7 +37,5 @@ jobs:
           # This step is executed in untrusted context. We use a GitHub token with minimal permissions.
           UPDATECLI_GITHUB_USERNAME: ${{ github.actor }}
           UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ## The Github token seems to be needed by Zizmor
-          # https://github.com/updatecli/policies/blob/main/updatecli/policies/zizmor/githubaction/scaffold/updatecli.d/default.yaml#L106
-          # Adding for now just for testing
-          GITHUB_TOKEN: ""
+          ## The Github token is needed by Zizmor
+          GITHUB_TOKEN: " ${{ secrets.GITHUB_TOKEN }}"
