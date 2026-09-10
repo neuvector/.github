@@ -1,17 +1,18 @@
 ---
+name: Updatecli policies
+
 valuesinline:
   scm:
     enabled: true
-    kind: githubsearch
-    search: |
-      org:neuvector
-      archived:false 
-      fork:false 
-      is:public
-    branch: "^main$|^master$"
+    kind: github
+    owner: neuvector
+    repository: .github
+    branch: main
     commitusingapi: true
-    user: updateclibot
-    limit: 0
+    user: "updatecli-bot"
+    email: "neuvector-bot@users.noreply.github.com"
+    commitmessage:
+      footers: "Signed-off-by: NeuVector bot <neuvector-bot@users.noreply.github.com>"
 
 include:
   - "updatecli/updatecli-compose.yaml"
@@ -21,43 +22,3 @@ policies:
     id: local
     config:
       - "updatecli/updatecli.d"
-    values:
-
-  - name: Update Updatecli policies
-    id: updatecli_policy
-    policy: ghcr.io/updatecli/policies/updatecli/autodiscovery:0.8.1@sha256:f8edda1a6cbf0d7274e2b847ede29fc4dc70dd5302ccb8575ae21b069cc0d8a0
-    valuesinline:
-      pipeline:
-        labels:
-          ecosystem: updatecli
-          monitor: active
-
-  - name: Handle Updatecli version in GitHub action
-    id: updatecli
-    policy: ghcr.io/updatecli/policies/updatecli/githubaction:0.9.1@sha256:49c07d724474ff7976f7ad5ecb0db9aa46448b456d08f82717913b403a0f02d8
-    valuesinline:
-      pipeline:
-        labels:
-          ecosystem: updatecli
-          monitor: active
-
-  - name: Install Zizmor
-    id: zizmor
-    policy: ghcr.io/updatecli/policies/zizmor/githubaction/scaffold:0.8.0@sha256:bacfadbe8803346402b059bc265e6c9d989d25143ed92a5dedf6012b0183650a
-    valuesinline:
-      config:
-        rules:
-          secrets-outside-env:
-            disable: true
-      autofix:
-        enabled: true
-        mode: all
-
-  - name: Bump zizmor version used in the Updatecli workflow
-    id: zizmor_version
-    config:
-      - updatecli/updatecli.d/zizmor.yaml
-
-  - name: Install Typos everywhere
-    id: typos
-    policy: ghcr.io/updatecli/policies/typos/githubaction:0.1.2@sha256:bd052609cded659c90dd1d3a60ebc5f1368b0f93aac5adf8ff13c3250e97f161
