@@ -21,6 +21,8 @@ jobs:
             apply_args: "--labels=monitor:active"
           - target_name: "existing pipelines"
             apply_args: "--existing-only=true"
+    permissions:
+      contents: read
     steps:
       - name: "Checkout"
         uses: "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1" # v7.0.1
@@ -52,7 +54,5 @@ jobs:
           UPDATECLI_UDASH_API_URL: ${{ secrets.UPDATECLI_UDASH_API_URL }}
           UPDATECLI_UDASH_ACCESS_TOKEN: ${{ secrets.UPDATECLI_UDASH_ACCESS_TOKEN }}
           UPDATECLI_UDASH_URL: ${{ secrets.UPDATECLI_UDASH_URL }}
-          ## The Github token seems to be needed by Zizmor
-          # https://github.com/updatecli/policies/blob/main/updatecli/policies/zizmor/githubaction/scaffold/updatecli.d/default.yaml#L106
-          # Adding for now just for testing
-          GITHUB_TOKEN: ""
+          ## The Github token is needed by Zizmor
+          GITHUB_TOKEN: " ${{ secrets.GITHUB_TOKEN }}"
